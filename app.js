@@ -9,4 +9,5 @@ app.use(bodyParser.json());
 
 app.use(eventRoutes);
 
+console.log('Server started',process.env.PORT)
 app.listen(process.env.PORT);

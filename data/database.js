@@ -16,6 +16,7 @@ try {
   console.log('Connected successfully to server');
 } catch (error) {
   console.log('Connection failed.');
+  console.log(error)
   await client.close();
   console.log('Connection closed.');
 }
