@@ -15,7 +15,7 @@ jobs:
       MONGODB_CLUSTER_ADDRESS: ${{secrets.MONGODB_CLUSTER_ADDRESS}}
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
-      PORT: ${{ secrets.PORT }}
+      PORT: ${{ vars.PORT }}
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
