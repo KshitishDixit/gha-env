@@ -10,12 +10,12 @@ env:
 
 jobs:
   test:
+    environment: testing
     env:
       MONGODB_CLUSTER_ADDRESS: ${{secrets.MONGODB_CLUSTER_ADDRESS}}
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: ${{ secrets.PORT }}
-    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -34,6 +34,8 @@ jobs:
       - name: Output information
         run: |
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
