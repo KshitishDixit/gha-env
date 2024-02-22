@@ -6,15 +6,15 @@ on:
       - dev
       - master
 env:
-  MONGO_DB_NAME: gha-demo
+  MONGODB_DB_NAME: gha-demo
 
 
 jobs: 
   test:
     env:
-      MONGO_DB_CLUSTER_ADDRESS: cluster0.vwium8z.mongodb.net
-      MONGO_DB_USERNAME: kshitishdixit
-      MONGO_DB_PASSWORD: pkITuvCnlyWJ0stS
+      MONGODB_CLUSTER_ADDRESS: cluster0.vwium8z.mongodb.net
+      MONGODB_USERNAME: kshitishdixit
+      MONGODB_PASSWORD: pkITuvCnlyWJ0stS
       PORT: 8080
     environment: testing
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
         run: npm test
       - name: Output information
         run: |
-          echo "MONGO_DB_USERNAME: ${{ env.MONGO_DB_USERNAME }}"
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -42,5 +42,5 @@ jobs:
       - name: Output information
         run: |        
           echo "..."
-          echo "MONGO_DB_USERNAME: ${{ env.MONGO_DB_USERNAME }} "
-          echo "MONGO_DB_NAME: $MONGO_DB_NAME"
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }} "
+          echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
