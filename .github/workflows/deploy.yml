@@ -6,16 +6,15 @@ on:
       - dev
       - master
 env:
-  MONGODB_DB_NAME: gha-demo
+  MONGODB_DB_NAME: ${{secrets.MONGO_DB_NAME}}
 
-
-jobs: 
+jobs:
   test:
     env:
-      MONGODB_CLUSTER_ADDRESS: cluster0.vwium8z.mongodb.net
-      MONGODB_USERNAME: kshitishdixit
-      MONGODB_PASSWORD: pkITuvCnlyWJ0stS
-      PORT: 8080
+      MONGODB_CLUSTER_ADDRESS: ${{secrets.MONGODB_CLUSTER_ADDRESS}}
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      PORT: ${{ secrets.PORT }}
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -40,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo "..."
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }} "
           echo "MONGODB_DB_NAME: $MONGODB_DB_NAME"
