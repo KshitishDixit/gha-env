@@ -6,7 +6,7 @@ on:
       - dev
       - master
 env:
-  MONGODB_DB_NAME: ${{secrets.MONGO_DB_NAME}}
+  MONGODB_DB_NAME: gha-test-v2
 
 jobs:
   test:
